@@ -8,21 +8,19 @@ from spotipy.oauth2 import SpotifyClientCredentials
 import datetime
 from dateutil import parser
 
-#Fill this out with your own API info
-user = ""
-clientID = ""
-clientSecret = ""
-playlistID = ""
-
 #Spotify API authentication
 scope = "streaming user-read-playback-state user-modify-playback-state playlist-modify-public playlist-read-collaborative playlist-modify-private"
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=clientID, client_secret=clientSecret, redirect_uri='http://localhost:8080/callback', scope=scope))
-token = util.prompt_for_user_token(user, scope, client_id=clientID, client_secret=clientSecret, redirect_uri='http://localhost:8080/callback')
+cid ="e8bd0549869f44b7b7eda3eb5bade92a" 
+secret = "3dccf1a080b94bc58d6a4bfbc7de5a4d"
+username = "jacobt.ewen@gmail.com"
+redirect_uri = "http://localhost:8888/callback/"
+token = util.prompt_for_user_token(username, scope, cid, secret, redirect_uri)
+sp = spotipy.Spotify(auth=token)
 
 #initializing variables
 current_albums = dict()
 temp_albums = dict()
-playlist_id = playlistID
+playlist_id = '6gLVrKiDjScagRNviW2vCL'
 
 #raspotify connection
 selfDevice = ''

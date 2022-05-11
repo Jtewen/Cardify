@@ -10,9 +10,9 @@ from dateutil import parser
 
 #Spotify API authentication
 scope = "streaming user-read-playback-state user-modify-playback-state playlist-modify-public playlist-read-collaborative playlist-modify-private"
-cid ="e8bd0549869f44b7b7eda3eb5bade92a" 
-secret = "3dccf1a080b94bc58d6a4bfbc7de5a4d"
-username = "jacobt.ewen@gmail.com"
+cid ="0000" 
+secret = "0000"
+username = "0000"
 redirect_uri = "http://localhost:8888/callback/"
 token = util.prompt_for_user_token(username, scope, cid, secret, redirect_uri)
 sp = spotipy.Spotify(auth=token)

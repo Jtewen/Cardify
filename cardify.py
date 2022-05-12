@@ -25,7 +25,7 @@ playlist_id = '6gLVrKiDjScagRNviW2vCL'
 #raspotify connection
 selfDevice = ''
 for device in sp.devices()['devices']:
-    if str(device['name']) == 'Beat Box':
+    if str(device['name']) == 'BeatBox':
         selfDevice = str(device['id'])
         print('device initiated: ' + selfDevice)
 if selfDevice == '':
@@ -37,11 +37,7 @@ while True:
     for album, time in current_albums.items():
         if time < datetime.datetime.now():
             print(str(sp.album(album)['name']) + ' has expired')
-            tracks = sp.album_tracks(album)
-            tracklist = []
-            for track in tracks['items']:
-                tracklist.append(track['uri'])
-            sp.playlist_remove_all_occurrences_of_items(playlist_id, tracklist)
+            sp.playlist_remove_all_occurrences_of_items(playlist_id, sp.album_tracks(album))
             print('deleting')
         else:
             temp_albums[album] = time
